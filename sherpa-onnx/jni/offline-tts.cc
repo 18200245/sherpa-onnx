@@ -365,7 +365,7 @@ static jobject CreateAudioObject(JNIEnv *env, const std::vector<float> &samples,
   env->SetFloatArrayRegion(samples_arr, 0, samples.size(), samples.data());
 
   // Step 2: Find the GeneratedAudio class
-  jclass gen_audio_cls = env->FindClass("com/k2fsa/sherpa/onnx/GeneratedAudio");
+  jclass gen_audio_cls = env->FindClass("com/giongnoiai/tts/engine/GeneratedAudio");
   if (!gen_audio_cls) {
     env->DeleteLocalRef(samples_arr);
     return nullptr;

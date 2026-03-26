@@ -35,10 +35,10 @@ static jobject ReadWaveImpl(JNIEnv *env, std::istream &is,
   env->SetFloatArrayRegion(samples_arr, 0, samples.size(), samples.data());
 
   // Find WaveData class
-  jclass cls = env->FindClass("com/k2fsa/sherpa/onnx/WaveData");
+  jclass cls = env->FindClass("com/giongnoiai/tts/engine/WaveData");
   if (cls == nullptr) {
     env->DeleteLocalRef(samples_arr);
-    SHERPA_ONNX_LOGE("Failed to find class com/k2fsa/sherpa/onnx/WaveData");
+    SHERPA_ONNX_LOGE("Failed to find class com/giongnoiai/tts/engine/WaveData");
     return nullptr;
   }
 

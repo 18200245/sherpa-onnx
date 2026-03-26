@@ -204,9 +204,9 @@ JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_Vad_front(JNIEnv *env,
                            static_cast<jsize>(front.samples.size()),
                            front.samples.data());
 
-  jclass cls = env->FindClass("com/k2fsa/sherpa/onnx/SpeechSegment");
+  jclass cls = env->FindClass("com/giongnoiai/tts/engine/SpeechSegment");
   if (!cls) {
-    SHERPA_ONNX_LOGE("Failed to find com/k2fsa/sherpa/onnx/SpeechSegment");
+    SHERPA_ONNX_LOGE("Failed to find com/giongnoiai/tts/engine/SpeechSegment");
 
     env->DeleteLocalRef(samples_arr);
     return nullptr;

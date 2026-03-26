@@ -134,9 +134,9 @@ JNIEXPORT jobjectArray JNICALL Java_com_giongnoiai_tts_engine_AudioTagging_compu
   std::vector<sherpa_onnx::AudioEvent> events = tagger->Compute(stream, top_k);
 
   // Find the AudioEvent class
-  jclass cls = env->FindClass("com/k2fsa/sherpa/onnx/AudioEvent");
+  jclass cls = env->FindClass("com/giongnoiai/tts/engine/AudioEvent");
   if (cls == nullptr) {
-    SHERPA_ONNX_LOGE("Failed to find class com/k2fsa/sherpa/onnx/AudioEvent");
+    SHERPA_ONNX_LOGE("Failed to find class com/giongnoiai/tts/engine/AudioEvent");
     return nullptr;
   }
 

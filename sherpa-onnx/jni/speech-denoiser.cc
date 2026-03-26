@@ -69,7 +69,7 @@ OnlineSpeechDenoiserConfig GetOnlineSpeechDenoiserConfig(JNIEnv *env,
 }
 
 jobject NewDenoisedAudio(JNIEnv *env, const DenoisedAudio &denoised) {
-  jclass cls = env->FindClass("com/k2fsa/sherpa/onnx/DenoisedAudio");
+  jclass cls = env->FindClass("com/giongnoiai/tts/engine/DenoisedAudio");
   if (cls == nullptr) {
     SHERPA_ONNX_LOGE("Failed to get class for DenoisedAudio");
     return nullptr;

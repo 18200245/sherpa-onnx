@@ -172,7 +172,7 @@ static jobjectArray ProcessImpl(
     const std::vector<sherpa_onnx::OfflineSpeakerDiarizationSegment>
         &segments) {
   jclass cls =
-      env->FindClass("com/k2fsa/sherpa/onnx/OfflineSpeakerDiarizationSegment");
+      env->FindClass("com/giongnoiai/tts/engine/OfflineSpeakerDiarizationSegment");
   if (cls == nullptr) {
     SHERPA_ONNX_LOGE(
         "Failed to find class OfflineSpeakerDiarizationSegment");

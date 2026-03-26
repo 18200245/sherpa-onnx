@@ -556,7 +556,7 @@ Java_com_giongnoiai_tts_engine_OfflineRecognizer_getResult(JNIEnv *env,
   sherpa_onnx::OfflineRecognitionResult result = stream->GetResult();
 
   // 2. Find the Java class and constructor
-  jclass cls = env->FindClass("com/k2fsa/sherpa/onnx/OfflineRecognizerResult");
+  jclass cls = env->FindClass("com/giongnoiai/tts/engine/OfflineRecognizerResult");
   if (cls == nullptr) {
     SHERPA_ONNX_LOGE("Failed to find class OfflineRecognizerResult");
     return nullptr;

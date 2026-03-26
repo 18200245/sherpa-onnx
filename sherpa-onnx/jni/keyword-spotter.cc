@@ -215,11 +215,11 @@ JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_getResul
 
   // Find KeywordSpotterResult class
   jclass result_cls =
-      env->FindClass("com/k2fsa/sherpa/onnx/KeywordSpotterResult");
+      env->FindClass("com/giongnoiai/tts/engine/KeywordSpotterResult");
 
   if (result_cls == nullptr) {
     SHERPA_ONNX_LOGE(
-        "Failed to find class com/k2fsa/sherpa/onnx/KeywordSpotterResult");
+        "Failed to find class com/giongnoiai/tts/engine/KeywordSpotterResult");
     env->DeleteLocalRef(j_keyword);
     env->DeleteLocalRef(j_tokens);
     env->DeleteLocalRef(j_timestamps);

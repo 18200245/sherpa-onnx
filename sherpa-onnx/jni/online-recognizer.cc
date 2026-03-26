@@ -396,7 +396,7 @@ JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_getRes
   sherpa_onnx::OnlineRecognizerResult result = recognizer->GetResult(stream);
 
   // Find the OnlineRecognizerResult class
-  jclass cls = env->FindClass("com/k2fsa/sherpa/onnx/OnlineRecognizerResult");
+  jclass cls = env->FindClass("com/giongnoiai/tts/engine/OnlineRecognizerResult");
   if (cls == nullptr) {
     SHERPA_ONNX_LOGE("Failed to find class OnlineRecognizerResult");
     return nullptr;
