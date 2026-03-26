@@ -85,7 +85,7 @@ static OfflineSpeakerDiarizationConfig GetOfflineSpeakerDiarizationConfig(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_newFromAsset(
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_newFromAsset(
     JNIEnv *env, jobject /*obj*/, jobject asset_manager, jobject _config) {
 #if __ANDROID_API__ >= 9
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
@@ -117,7 +117,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_newFromAsset(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_newFromFile(
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_newFromFile(
     JNIEnv *env, jobject /*obj*/, jobject _config) {
   bool ok = false;
   auto config =
@@ -142,7 +142,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_newFromFile(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT void JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_setConfig(
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_setConfig(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jobject _config) {
   bool ok = false;
   auto config =
@@ -161,7 +161,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_setConfig(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT void JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_delete(JNIEnv * /*env*/,
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_delete(JNIEnv * /*env*/,
                                                             jobject /*obj*/,
                                                             jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OfflineSpeakerDiarization *>(ptr);
@@ -204,7 +204,7 @@ static jobjectArray ProcessImpl(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jobjectArray JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_process(
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_process(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jfloatArray samples) {
   auto sd = reinterpret_cast<sherpa_onnx::OfflineSpeakerDiarization *>(ptr);
 
@@ -218,7 +218,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_process(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jobjectArray JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_processWithCallback(
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_processWithCallback(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jfloatArray samples,
     jobject callback, jlong arg) {
   std::function<int32_t(int32_t, int32_t, void *)> callback_wrapper =
@@ -262,7 +262,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_processWithCallback(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jint JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineSpeakerDiarization_getSampleRate(
+Java_com_giongnoiai_tts_engine_OfflineSpeakerDiarization_getSampleRate(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   return reinterpret_cast<sherpa_onnx::OfflineSpeakerDiarization *>(ptr)
       ->SampleRate();

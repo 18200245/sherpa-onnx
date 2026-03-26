@@ -73,7 +73,7 @@ static KeywordSpotterConfig GetKwsConfig(JNIEnv *env, jobject config,
 }  // namespace sherpa_onnx
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_newFromAsset(
+JNIEXPORT jlong JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_newFromAsset(
     JNIEnv *env, jobject /*obj*/, jobject asset_manager, jobject _config) {
 #if __ANDROID_API__ >= 9
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
@@ -102,7 +102,7 @@ JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_newFromAsset(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_newFromFile(
+JNIEXPORT jlong JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_newFromFile(
     JNIEnv *env, jobject /*obj*/, jobject _config) {
   bool ok = false;
   auto config = sherpa_onnx::GetKwsConfig(env, _config, &ok);
@@ -125,13 +125,13 @@ JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_newFromFile(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::KeywordSpotter *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_decode(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_decode(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto kws = reinterpret_cast<sherpa_onnx::KeywordSpotter *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_decode(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_reset(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_reset(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto kws = reinterpret_cast<sherpa_onnx::KeywordSpotter *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);
@@ -149,7 +149,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_reset(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_createStream(
+JNIEXPORT jlong JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_createStream(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring keywords) {
   auto kws = reinterpret_cast<sherpa_onnx::KeywordSpotter *>(ptr);
 
@@ -166,14 +166,14 @@ JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_createStream(
 
   // The user is responsible to free the returned pointer.
   //
-  // See Java_com_k2fsa_sherpa_onnx_OfflineStream_delete() from
+  // See Java_com_giongnoiai_tts_engine_OfflineStream_delete() from
   // ./offline-stream.cc
   sherpa_onnx::OnlineStream *ans = stream.release();
   return (jlong)ans;
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_isReady(
+JNIEXPORT jboolean JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_isReady(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto kws = reinterpret_cast<sherpa_onnx::KeywordSpotter *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);
@@ -182,7 +182,7 @@ JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_isReady(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_KeywordSpotter_getResult(
+JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_KeywordSpotter_getResult(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto kws = reinterpret_cast<sherpa_onnx::KeywordSpotter *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);

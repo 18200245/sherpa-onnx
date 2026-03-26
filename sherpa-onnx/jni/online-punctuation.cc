@@ -47,7 +47,7 @@ static OnlinePunctuationConfig GetOnlinePunctuationConfig(JNIEnv *env,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlinePunctuation_newFromAsset(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OnlinePunctuation_newFromAsset(JNIEnv *env,
                                                           jobject /*obj*/,
                                                           jobject asset_manager,
                                                           jobject _config) {
@@ -79,7 +79,7 @@ Java_com_k2fsa_sherpa_onnx_OnlinePunctuation_newFromAsset(JNIEnv *env,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlinePunctuation_newFromFile(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OnlinePunctuation_newFromFile(JNIEnv *env,
                                                          jobject /*obj*/,
                                                          jobject _config) {
   bool ok = false;
@@ -103,14 +103,14 @@ Java_com_k2fsa_sherpa_onnx_OnlinePunctuation_newFromFile(JNIEnv *env,
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlinePunctuation_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlinePunctuation_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OnlinePunctuation *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jstring JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlinePunctuation_addPunctuation(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OnlinePunctuation_addPunctuation(JNIEnv *env,
                                                             jobject /*obj*/,
                                                             jlong ptr,
                                                             jstring text) {

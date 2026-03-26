@@ -229,7 +229,7 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_newFromAsset(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OnlineRecognizer_newFromAsset(JNIEnv *env,
                                                          jobject /*obj*/,
                                                          jobject asset_manager,
                                                          jobject _config) {
@@ -269,7 +269,7 @@ Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_newFromAsset(JNIEnv *env,
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_newFromFile(
+JNIEXPORT jlong JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_newFromFile(
     JNIEnv *env, jobject /*obj*/, jobject _config) {
   bool ok = false;
   auto config = sherpa_onnx::GetConfig(env, _config, &ok);
@@ -301,13 +301,13 @@ JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_newFromFile(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OnlineRecognizer *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_reset(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_reset(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto recognizer = reinterpret_cast<sherpa_onnx::OnlineRecognizer *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);
@@ -315,7 +315,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_reset(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_isReady(
+JNIEXPORT jboolean JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_isReady(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto recognizer = reinterpret_cast<sherpa_onnx::OnlineRecognizer *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);
@@ -325,7 +325,7 @@ JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_isReady(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jboolean JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_isEndpoint(JNIEnv * /*env*/,
+Java_com_giongnoiai_tts_engine_OnlineRecognizer_isEndpoint(JNIEnv * /*env*/,
                                                        jobject /*obj*/,
                                                        jlong ptr,
                                                        jlong stream_ptr) {
@@ -336,7 +336,7 @@ Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_isEndpoint(JNIEnv * /*env*/,
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_decode(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_decode(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto recognizer = reinterpret_cast<sherpa_onnx::OnlineRecognizer *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);
@@ -346,7 +346,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_decode(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT void JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_decodeStreams(
+Java_com_giongnoiai_tts_engine_OnlineRecognizer_decodeStreams(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jlongArray stream_ptrs) {
   auto recognizer = reinterpret_cast<sherpa_onnx::OnlineRecognizer *>(ptr);
 
@@ -362,7 +362,7 @@ Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_decodeStreams(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_createStream(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OnlineRecognizer_createStream(JNIEnv *env,
                                                          jobject /*obj*/,
                                                          jlong ptr,
                                                          jstring hotwords) {
@@ -381,14 +381,14 @@ Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_createStream(JNIEnv *env,
 
   // The user is responsible to free the returned pointer.
   //
-  // See Java_com_k2fsa_sherpa_onnx_OfflineStream_delete() from
+  // See Java_com_giongnoiai_tts_engine_OfflineStream_delete() from
   // ./offline-stream.cc
   sherpa_onnx::OnlineStream *ans = stream.release();
   return (jlong)ans;
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OnlineRecognizer_getResult(
+JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_OnlineRecognizer_getResult(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   auto recognizer = reinterpret_cast<sherpa_onnx::OnlineRecognizer *>(ptr);
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(stream_ptr);

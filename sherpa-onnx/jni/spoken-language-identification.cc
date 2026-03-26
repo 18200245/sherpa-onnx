@@ -47,7 +47,7 @@ static SpokenLanguageIdentificationConfig GetSpokenLanguageIdentificationConfig(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_newFromAsset(
+Java_com_giongnoiai_tts_engine_SpokenLanguageIdentification_newFromAsset(
     JNIEnv *env, jobject /*obj*/, jobject asset_manager, jobject _config) {
 #if __ANDROID_API__ >= 9
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
@@ -81,7 +81,7 @@ Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_newFromAsset(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_newFromFile(
+Java_com_giongnoiai_tts_engine_SpokenLanguageIdentification_newFromFile(
     JNIEnv *env, jobject /*obj*/, jobject _config) {
   bool ok = false;
   auto config =
@@ -107,7 +107,7 @@ Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_newFromFile(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT void JNICALL
-Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_delete(JNIEnv * /*env*/,
+Java_com_giongnoiai_tts_engine_SpokenLanguageIdentification_delete(JNIEnv * /*env*/,
                                                                jobject /*obj*/,
                                                                jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::SpokenLanguageIdentification *>(ptr);
@@ -115,7 +115,7 @@ Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_delete(JNIEnv * /*env*/,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_createStream(
+Java_com_giongnoiai_tts_engine_SpokenLanguageIdentification_createStream(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   auto slid =
       reinterpret_cast<sherpa_onnx::SpokenLanguageIdentification *>(ptr);
@@ -123,7 +123,7 @@ Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_createStream(
 
   // The user is responsible to free the returned pointer.
   //
-  // See Java_com_k2fsa_sherpa_onnx_OfflineStream_delete() from
+  // See Java_com_giongnoiai_tts_engine_OfflineStream_delete() from
   // ./offline-stream.cc
   sherpa_onnx::OfflineStream *p = s.release();
   return (jlong)p;
@@ -131,7 +131,7 @@ Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_createStream(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jstring JNICALL
-Java_com_k2fsa_sherpa_onnx_SpokenLanguageIdentification_compute(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_SpokenLanguageIdentification_compute(JNIEnv *env,
                                                                 jobject /*obj*/,
                                                                 jlong ptr,
                                                                 jlong s_ptr) {

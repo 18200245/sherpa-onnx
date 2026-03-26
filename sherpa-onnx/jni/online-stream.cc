@@ -7,13 +7,13 @@
 #include "sherpa-onnx/jni/common.h"
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineStream_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OnlineStream *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_acceptWaveform(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineStream_acceptWaveform(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jfloatArray samples,
     jint sample_rate) {
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(ptr);
@@ -25,14 +25,14 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_acceptWaveform(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_inputFinished(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineStream_inputFinished(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(ptr);
   stream->InputFinished();
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_setOption(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineStream_setOption(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring key, jstring value) {
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(ptr);
   const char *p_key = env->GetStringUTFChars(key, nullptr);
@@ -43,7 +43,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_setOption(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jstring JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_getOption(
+JNIEXPORT jstring JNICALL Java_com_giongnoiai_tts_engine_OnlineStream_getOption(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring key) {
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(ptr);
   const char *p_key = env->GetStringUTFChars(key, nullptr);
@@ -53,7 +53,7 @@ JNIEXPORT jstring JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_getOption(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_OnlineStream_hasOption(
+JNIEXPORT jboolean JNICALL Java_com_giongnoiai_tts_engine_OnlineStream_hasOption(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring key) {
   auto stream = reinterpret_cast<sherpa_onnx::OnlineStream *>(ptr);
   const char *p_key = env->GetStringUTFChars(key, nullptr);

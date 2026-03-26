@@ -426,7 +426,7 @@ static int32_t CallCallback(JNIEnv *env, jobject callback,
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_newFromAsset(
+JNIEXPORT jlong JNICALL Java_com_giongnoiai_tts_engine_OfflineTts_newFromAsset(
     JNIEnv *env, jobject /*obj*/, jobject asset_manager, jobject _config) {
 #if __ANDROID_API__ >= 9
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
@@ -465,7 +465,7 @@ JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_newFromAsset(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_newFromFile(
+JNIEXPORT jlong JNICALL Java_com_giongnoiai_tts_engine_OfflineTts_newFromFile(
     JNIEnv *env, jobject /*obj*/, jobject _config) {
   return SafeJNI(
       env, "OfflineTts_newFromFile",
@@ -492,25 +492,25 @@ JNIEXPORT jlong JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_newFromFile(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineTts_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OfflineTts *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jint JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_getSampleRate(
+JNIEXPORT jint JNICALL Java_com_giongnoiai_tts_engine_OfflineTts_getSampleRate(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   return reinterpret_cast<sherpa_onnx::OfflineTts *>(ptr)->SampleRate();
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jint JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_getNumSpeakers(
+JNIEXPORT jint JNICALL Java_com_giongnoiai_tts_engine_OfflineTts_getNumSpeakers(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   return reinterpret_cast<sherpa_onnx::OfflineTts *>(ptr)->NumSpeakers();
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_generateImpl(
+JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_OfflineTts_generateImpl(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring text, jint sid,
     jfloat speed) {
   const char *p_text = env->GetStringUTFChars(text, nullptr);
@@ -529,7 +529,7 @@ JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OfflineTts_generateImpl(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jobject JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineTts_generateWithCallbackImpl(
+Java_com_giongnoiai_tts_engine_OfflineTts_generateWithCallbackImpl(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring text, jint sid,
     jfloat speed, jobject callback) {
   const char *p_text = env->GetStringUTFChars(text, nullptr);
@@ -564,7 +564,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineTts_generateWithCallbackImpl(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jobject JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineTts_generateWithConfigImpl(
+Java_com_giongnoiai_tts_engine_OfflineTts_generateWithConfigImpl(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring text, jobject _gen_config,
     jobject callback) {
   const char *p_text = env->GetStringUTFChars(text, nullptr);
@@ -594,7 +594,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineTts_generateWithConfigImpl(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_GeneratedAudio_saveImpl(
+JNIEXPORT jboolean JNICALL Java_com_giongnoiai_tts_engine_GeneratedAudio_saveImpl(
     JNIEnv *env, jobject /*obj*/, jstring filename, jfloatArray samples,
     jint sample_rate) {
   const char *p_filename = env->GetStringUTFChars(filename, nullptr);

@@ -9,7 +9,7 @@
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_newFromAsset(
+Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_newFromAsset(
     JNIEnv *env, jobject /*obj*/, jobject asset_manager, jobject _config) {
 #if __ANDROID_API__ >= 9
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
@@ -39,7 +39,7 @@ Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_newFromAsset(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_newFromFile(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_newFromFile(JNIEnv *env,
                                                             jobject /*obj*/,
                                                             jobject _config) {
   return SafeJNI(
@@ -68,14 +68,14 @@ Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_newFromFile(JNIEnv *env,
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OnlineSpeechDenoiser *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jint JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_getSampleRate(JNIEnv * /*env*/,
+Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_getSampleRate(JNIEnv * /*env*/,
                                                               jobject /*obj*/,
                                                               jlong ptr) {
   return reinterpret_cast<sherpa_onnx::OnlineSpeechDenoiser *>(ptr)
@@ -84,14 +84,14 @@ Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_getSampleRate(JNIEnv * /*env*/,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jint JNICALL
-Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_getFrameShiftInSamples(
+Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_getFrameShiftInSamples(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   return reinterpret_cast<sherpa_onnx::OnlineSpeechDenoiser *>(ptr)
       ->GetFrameShiftInSamples();
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_run(
+JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_run(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jfloatArray samples,
     jint sample_rate) {
   auto speech_denoiser =
@@ -106,7 +106,7 @@ JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_run(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_flush(
+JNIEXPORT jobject JNICALL Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_flush(
     JNIEnv *env, jobject /*obj*/, jlong ptr) {
   auto speech_denoiser =
       reinterpret_cast<sherpa_onnx::OnlineSpeechDenoiser *>(ptr);
@@ -115,7 +115,7 @@ JNIEXPORT jobject JNICALL Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_flush(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OnlineSpeechDenoiser_reset(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OnlineSpeechDenoiser_reset(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   reinterpret_cast<sherpa_onnx::OnlineSpeechDenoiser *>(ptr)->Reset();
 }

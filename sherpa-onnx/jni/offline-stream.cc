@@ -7,13 +7,13 @@
 #include "sherpa-onnx/jni/common.h"
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineStream_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OfflineStream *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_acceptWaveform(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineStream_acceptWaveform(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jfloatArray samples,
     jint sample_rate) {
   auto stream = reinterpret_cast<sherpa_onnx::OfflineStream *>(ptr);
@@ -25,7 +25,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_acceptWaveform(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_setOption(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineStream_setOption(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring key, jstring value) {
   auto stream = reinterpret_cast<sherpa_onnx::OfflineStream *>(ptr);
   const char *p_key = env->GetStringUTFChars(key, nullptr);
@@ -36,7 +36,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_setOption(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jstring JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_getOption(
+JNIEXPORT jstring JNICALL Java_com_giongnoiai_tts_engine_OfflineStream_getOption(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring key) {
   auto stream = reinterpret_cast<sherpa_onnx::OfflineStream *>(ptr);
   const char *p_key = env->GetStringUTFChars(key, nullptr);
@@ -46,7 +46,7 @@ JNIEXPORT jstring JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_getOption(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT jboolean JNICALL Java_com_k2fsa_sherpa_onnx_OfflineStream_hasOption(
+JNIEXPORT jboolean JNICALL Java_com_giongnoiai_tts_engine_OfflineStream_hasOption(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jstring key) {
   auto stream = reinterpret_cast<sherpa_onnx::OfflineStream *>(ptr);
   const char *p_key = env->GetStringUTFChars(key, nullptr);

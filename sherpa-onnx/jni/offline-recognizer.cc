@@ -393,7 +393,7 @@ static OfflineRecognizerConfig GetOfflineConfig(JNIEnv *env, jobject config,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_newFromAsset(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OfflineRecognizer_newFromAsset(JNIEnv *env,
                                                           jobject /*obj*/,
                                                           jobject asset_manager,
                                                           jobject _config) {
@@ -435,7 +435,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_newFromAsset(JNIEnv *env,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_newFromFile(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OfflineRecognizer_newFromFile(JNIEnv *env,
                                                          jobject /*obj*/,
                                                          jobject _config) {
   bool ok = false;
@@ -468,7 +468,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_newFromFile(JNIEnv *env,
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_setConfig(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineRecognizer_setConfig(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jobject _config) {
   bool ok = false;
   auto config = sherpa_onnx::GetOfflineConfig(env, _config, &ok);
@@ -487,14 +487,14 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_setConfig(
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_delete(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineRecognizer_delete(
     JNIEnv * /*env*/, jobject /*obj*/, jlong ptr) {
   delete reinterpret_cast<sherpa_onnx::OfflineRecognizer *>(ptr);
 }
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jlong JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_createStream(JNIEnv * /*env*/,
+Java_com_giongnoiai_tts_engine_OfflineRecognizer_createStream(JNIEnv * /*env*/,
                                                           jobject /*obj*/,
                                                           jlong ptr) {
   auto recognizer = reinterpret_cast<sherpa_onnx::OfflineRecognizer *>(ptr);
@@ -502,14 +502,14 @@ Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_createStream(JNIEnv * /*env*/,
 
   // The user is responsible to free the returned pointer.
   //
-  // See Java_com_k2fsa_sherpa_onnx_OfflineStream_delete() from
+  // See Java_com_giongnoiai_tts_engine_OfflineStream_delete() from
   // ./offline-stream.cc
   sherpa_onnx::OfflineStream *p = s.release();
   return (jlong)p;
 }
 
 SHERPA_ONNX_EXTERN_C
-JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_decode(
+JNIEXPORT void JNICALL Java_com_giongnoiai_tts_engine_OfflineRecognizer_decode(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jlong stream_ptr) {
   SafeJNI(env, "OfflineRecognizer_decode", [&] {
     if (!ValidatePointer(env, ptr, "OfflineRecognizer_decode",
@@ -527,7 +527,7 @@ JNIEXPORT void JNICALL Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_decode(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT void JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_decodeStreams(
+Java_com_giongnoiai_tts_engine_OfflineRecognizer_decodeStreams(
     JNIEnv *env, jobject /*obj*/, jlong ptr, jlongArray stream_ptrs) {
   SafeJNI(env, "OfflineRecognizer_decode_streams", [&] {
     if (!ValidatePointer(env, ptr, "OfflineRecognizer_decode_streams",
@@ -549,7 +549,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_decodeStreams(
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT jobject JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_getResult(JNIEnv *env,
+Java_com_giongnoiai_tts_engine_OfflineRecognizer_getResult(JNIEnv *env,
                                                        jobject /*obj*/,
                                                        jlong streamPtr) {
   auto stream = reinterpret_cast<sherpa_onnx::OfflineStream *>(streamPtr);
@@ -607,7 +607,7 @@ Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_getResult(JNIEnv *env,
 
 SHERPA_ONNX_EXTERN_C
 JNIEXPORT void JNICALL
-Java_com_k2fsa_sherpa_onnx_OfflineRecognizer_prependAdspLibraryPath(
+Java_com_giongnoiai_tts_engine_OfflineRecognizer_prependAdspLibraryPath(
     JNIEnv *env, jclass /*cls*/, jstring new_path) {
   const char *p = env->GetStringUTFChars(new_path, nullptr);
   sherpa_onnx::PrependAdspLibraryPath(p);
