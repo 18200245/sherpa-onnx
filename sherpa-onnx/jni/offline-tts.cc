@@ -123,12 +123,12 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
   jfieldID fid;
 
   fid = env->GetFieldID(cls, "model",
-                        "Lcom/k2fsa/sherpa/onnx/OfflineTtsModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OfflineTtsModelConfig;");
   jobject model = env->GetObjectField(config, fid);
   jclass model_config_cls = env->GetObjectClass(model);
 
   fid = env->GetFieldID(model_config_cls, "vits",
-                        "Lcom/k2fsa/sherpa/onnx/OfflineTtsVitsModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OfflineTtsVitsModelConfig;");
   jobject vits = env->GetObjectField(model, fid);
   jclass vits_cls = env->GetObjectClass(vits);
 
@@ -151,7 +151,7 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
 
   // matcha
   fid = env->GetFieldID(model_config_cls, "matcha",
-                        "Lcom/k2fsa/sherpa/onnx/OfflineTtsMatchaModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OfflineTtsMatchaModelConfig;");
   jobject matcha = env->GetObjectField(model, fid);
   jclass matcha_cls = env->GetObjectClass(matcha);
 
@@ -177,7 +177,7 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
                              matcha_cls, matcha);
 
   fid = env->GetFieldID(model_config_cls, "kokoro",
-                        "Lcom/k2fsa/sherpa/onnx/OfflineTtsKokoroModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OfflineTtsKokoroModelConfig;");
   jobject kokoro = env->GetObjectField(model, fid);
   jclass kokoro_cls = env->GetObjectClass(kokoro);
 
@@ -204,7 +204,7 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
   // zipvoice
   fid = env->GetFieldID(
       model_config_cls, "zipvoice",
-      "Lcom/k2fsa/sherpa/onnx/OfflineTtsZipVoiceModelConfig;");
+      "Lcom/giongnoiai/tts/engine/OfflineTtsZipVoiceModelConfig;");
   jobject zipvoice = env->GetObjectField(model, fid);
   jclass zipvoice_cls = env->GetObjectClass(zipvoice);
 
@@ -240,7 +240,7 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
 
   // kitten
   fid = env->GetFieldID(model_config_cls, "kitten",
-                        "Lcom/k2fsa/sherpa/onnx/OfflineTtsKittenModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OfflineTtsKittenModelConfig;");
   jobject kitten = env->GetObjectField(model, fid);
   jclass kitten_cls = env->GetObjectClass(kitten);
 
@@ -261,7 +261,7 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
 
   // pocket
   fid = env->GetFieldID(model_config_cls, "pocket",
-                        "Lcom/k2fsa/sherpa/onnx/OfflineTtsPocketModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OfflineTtsPocketModelConfig;");
   jobject pocket = env->GetObjectField(model, fid);
   jclass pocket_cls = env->GetObjectClass(pocket);
 
@@ -292,7 +292,7 @@ static OfflineTtsConfig GetOfflineTtsConfig(JNIEnv *env, jobject config,
   // supertonic
   fid = env->GetFieldID(
       model_config_cls, "supertonic",
-      "Lcom/k2fsa/sherpa/onnx/OfflineTtsSupertonicModelConfig;");
+      "Lcom/giongnoiai/tts/engine/OfflineTtsSupertonicModelConfig;");
   jobject supertonic = env->GetObjectField(model, fid);
   jclass supertonic_cls = env->GetObjectClass(supertonic);
 

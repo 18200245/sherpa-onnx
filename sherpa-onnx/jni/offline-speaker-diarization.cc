@@ -21,13 +21,13 @@ static OfflineSpeakerDiarizationConfig GetOfflineSpeakerDiarizationConfig(
   //---------- segmentation ----------
   fid = env->GetFieldID(
       cls, "segmentation",
-      "Lcom/k2fsa/sherpa/onnx/OfflineSpeakerSegmentationModelConfig;");
+      "Lcom/giongnoiai/tts/engine/OfflineSpeakerSegmentationModelConfig;");
   jobject segmentation_config = env->GetObjectField(config, fid);
   jclass segmentation_config_cls = env->GetObjectClass(segmentation_config);
 
   fid = env->GetFieldID(
       segmentation_config_cls, "pyannote",
-      "Lcom/k2fsa/sherpa/onnx/OfflineSpeakerSegmentationPyannoteModelConfig;");
+      "Lcom/giongnoiai/tts/engine/OfflineSpeakerSegmentationPyannoteModelConfig;");
   jobject pyannote_config = env->GetObjectField(segmentation_config, fid);
   jclass pyannote_config_cls = env->GetObjectClass(pyannote_config);
 
@@ -46,7 +46,7 @@ static OfflineSpeakerDiarizationConfig GetOfflineSpeakerDiarizationConfig(
   //---------- embedding ----------
   fid = env->GetFieldID(
       cls, "embedding",
-      "Lcom/k2fsa/sherpa/onnx/SpeakerEmbeddingExtractorConfig;");
+      "Lcom/giongnoiai/tts/engine/SpeakerEmbeddingExtractorConfig;");
   jobject embedding_config = env->GetObjectField(config, fid);
   jclass embedding_config_cls = env->GetObjectClass(embedding_config);
 
@@ -63,7 +63,7 @@ static OfflineSpeakerDiarizationConfig GetOfflineSpeakerDiarizationConfig(
                               embedding_config_cls, embedding_config);
 
   fid = env->GetFieldID(cls, "clustering",
-                        "Lcom/k2fsa/sherpa/onnx/FastClusteringConfig;");
+                        "Lcom/giongnoiai/tts/engine/FastClusteringConfig;");
   jobject clustering_config = env->GetObjectField(config, fid);
   jclass clustering_config_cls = env->GetObjectClass(clustering_config);
 

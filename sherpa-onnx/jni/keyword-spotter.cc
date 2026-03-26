@@ -39,7 +39,7 @@ static KeywordSpotterConfig GetKwsConfig(JNIEnv *env, jobject config,
 
   //---------- feat config ----------
   fid = env->GetFieldID(cls, "featConfig",
-                        "Lcom/k2fsa/sherpa/onnx/FeatureConfig;");
+                        "Lcom/giongnoiai/tts/engine/FeatureConfig;");
   jobject feat_config = env->GetObjectField(config, fid);
   jclass feat_config_cls = env->GetObjectClass(feat_config);
 
@@ -54,7 +54,7 @@ static KeywordSpotterConfig GetKwsConfig(JNIEnv *env, jobject config,
 
   //---------- model config ----------
   fid = env->GetFieldID(cls, "modelConfig",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineModelConfig;");
   jobject model_config = env->GetObjectField(config, fid);
   jclass model_config_cls = env->GetObjectClass(model_config);
   ans.model_config =

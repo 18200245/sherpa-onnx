@@ -18,7 +18,7 @@ OnlineModelConfig GetOnlineModelConfig(JNIEnv *env, jclass model_config_cls,
 
   auto fid =
       env->GetFieldID(model_config_cls, "transducer",
-                      "Lcom/k2fsa/sherpa/onnx/OnlineTransducerModelConfig;");
+                      "Lcom/giongnoiai/tts/engine/OnlineTransducerModelConfig;");
   jobject transducer_config = env->GetObjectField(model_config, fid);
   jclass transducer_config_cls = env->GetObjectClass(transducer_config);
 
@@ -32,7 +32,7 @@ OnlineModelConfig GetOnlineModelConfig(JNIEnv *env, jclass model_config_cls,
                               transducer_config_cls, transducer_config);
 
   fid = env->GetFieldID(model_config_cls, "paraformer",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineParaformerModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineParaformerModelConfig;");
   jobject paraformer_config = env->GetObjectField(model_config, fid);
   jclass paraformer_config_cls = env->GetObjectClass(paraformer_config);
 
@@ -44,7 +44,7 @@ OnlineModelConfig GetOnlineModelConfig(JNIEnv *env, jclass model_config_cls,
 
   fid =
       env->GetFieldID(model_config_cls, "zipformer2Ctc",
-                      "Lcom/k2fsa/sherpa/onnx/OnlineZipformer2CtcModelConfig;");
+                      "Lcom/giongnoiai/tts/engine/OnlineZipformer2CtcModelConfig;");
   jobject zipformer2_ctc_config = env->GetObjectField(model_config, fid);
   jclass zipformer2_ctc_config_cls = env->GetObjectClass(zipformer2_ctc_config);
 
@@ -52,7 +52,7 @@ OnlineModelConfig GetOnlineModelConfig(JNIEnv *env, jclass model_config_cls,
                               zipformer2_ctc_config_cls, zipformer2_ctc_config);
 
   fid = env->GetFieldID(model_config_cls, "neMoCtc",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineNeMoCtcModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineNeMoCtcModelConfig;");
   jobject nemo_ctc_config = env->GetObjectField(model_config, fid);
   jclass nemo_ctc_config_cls = env->GetObjectClass(nemo_ctc_config);
 
@@ -60,7 +60,7 @@ OnlineModelConfig GetOnlineModelConfig(JNIEnv *env, jclass model_config_cls,
                               nemo_ctc_config);
 
   fid = env->GetFieldID(model_config_cls, "toneCtc",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineToneCtcModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineToneCtcModelConfig;");
   jobject t_one_ctc_config = env->GetObjectField(model_config, fid);
   jclass t_one_ctc_config_cls = env->GetObjectClass(t_one_ctc_config);
 
@@ -115,7 +115,7 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
   SHERPA_ONNX_JNI_READ_FLOAT(ans.blank_penalty, blankPenalty, cls, config);
 
   fid = env->GetFieldID(cls, "featConfig",
-                        "Lcom/k2fsa/sherpa/onnx/FeatureConfig;");
+                        "Lcom/giongnoiai/tts/engine/FeatureConfig;");
   jobject feat_config = env->GetObjectField(config, fid);
   jclass feat_config_cls = env->GetObjectClass(feat_config);
 
@@ -131,21 +131,21 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
   SHERPA_ONNX_JNI_READ_BOOL(ans.enable_endpoint, enableEndpoint, cls, config);
 
   fid = env->GetFieldID(cls, "endpointConfig",
-                        "Lcom/k2fsa/sherpa/onnx/EndpointConfig;");
+                        "Lcom/giongnoiai/tts/engine/EndpointConfig;");
   jobject endpoint_config = env->GetObjectField(config, fid);
   jclass endpoint_config_cls = env->GetObjectClass(endpoint_config);
 
   fid = env->GetFieldID(endpoint_config_cls, "rule1",
-                        "Lcom/k2fsa/sherpa/onnx/EndpointRule;");
+                        "Lcom/giongnoiai/tts/engine/EndpointRule;");
   jobject rule1 = env->GetObjectField(endpoint_config, fid);
   jclass rule_class = env->GetObjectClass(rule1);
 
   fid = env->GetFieldID(endpoint_config_cls, "rule2",
-                        "Lcom/k2fsa/sherpa/onnx/EndpointRule;");
+                        "Lcom/giongnoiai/tts/engine/EndpointRule;");
   jobject rule2 = env->GetObjectField(endpoint_config, fid);
 
   fid = env->GetFieldID(endpoint_config_cls, "rule3",
-                        "Lcom/k2fsa/sherpa/onnx/EndpointRule;");
+                        "Lcom/giongnoiai/tts/engine/EndpointRule;");
   jobject rule3 = env->GetObjectField(endpoint_config, fid);
 
   fid = env->GetFieldID(rule_class, "mustContainNonSilence", "Z");
@@ -174,7 +174,7 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
 
   //---------- model config ----------
   fid = env->GetFieldID(cls, "modelConfig",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineModelConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineModelConfig;");
   jobject model_config = env->GetObjectField(config, fid);
   jclass model_config_cls = env->GetObjectClass(model_config);
 
@@ -189,7 +189,7 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
 
   //---------- rnn lm model config ----------
   fid = env->GetFieldID(cls, "lmConfig",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineLMConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineLMConfig;");
   jobject lm_model_config = env->GetObjectField(config, fid);
   jclass lm_model_config_cls = env->GetObjectClass(lm_model_config);
 
@@ -199,7 +199,7 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
                              lm_model_config);
 
   fid = env->GetFieldID(cls, "ctcFstDecoderConfig",
-                        "Lcom/k2fsa/sherpa/onnx/OnlineCtcFstDecoderConfig;");
+                        "Lcom/giongnoiai/tts/engine/OnlineCtcFstDecoderConfig;");
 
   jobject fst_decoder_config = env->GetObjectField(config, fid);
   jclass fst_decoder_config_cls = env->GetObjectClass(fst_decoder_config);
@@ -211,7 +211,7 @@ static OnlineRecognizerConfig GetConfig(JNIEnv *env, jobject config, bool *ok) {
                            fst_decoder_config_cls, fst_decoder_config);
 
   fid = env->GetFieldID(cls, "hr",
-                        "Lcom/k2fsa/sherpa/onnx/HomophoneReplacerConfig;");
+                        "Lcom/giongnoiai/tts/engine/HomophoneReplacerConfig;");
   jobject hr_config = env->GetObjectField(config, fid);
   jclass hr_config_cls = env->GetObjectClass(hr_config);
 
